@@ -2,6 +2,7 @@ package ru.peony.receiver.domain;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
@@ -9,5 +10,6 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(fluent = true,chain = true)
 public class IssueCreationResult {
-    private final String issueId;
+    private String key;
+    private Long id;
 }

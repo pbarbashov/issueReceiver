@@ -1,2 +1,2 @@
 jira:
-  baseUrl: "https://peony.atlassian.net/rest/api/3"
+  baseUrl: "https://peony.atlassian.net/rest/api/2"

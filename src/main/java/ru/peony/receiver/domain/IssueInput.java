@@ -21,6 +21,7 @@ public class IssueInput {
         private String description;
         private IssueType issuetype;
     }
+
     @AllArgsConstructor
     @RequiredArgsConstructor
     @Data

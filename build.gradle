@@ -9,6 +9,10 @@ group = 'ru.peony'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '14'
 
+tasks.withType(JavaCompile).each {
+	it.options.compilerArgs.add('--enable-preview')
+}
+
 repositories {
 	mavenCentral()
 	maven {
@@ -27,6 +31,8 @@ dependencies {
 	implementation 'com.fasterxml.jackson.core:jackson-core'
 	implementation 'org.eclipse.jetty:jetty-reactive-httpclient'
 	implementation 'com.atlassian.jira:jira-rest-java-client-core:5.2.1'
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
@@ -35,4 +41,8 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+bootRun {
+	jvmArgs("--enable-preview")
 }

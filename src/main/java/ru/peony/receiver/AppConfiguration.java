@@ -21,6 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.client.reactive.JettyClientHttpConnector;
 import org.springframework.http.codec.json.Jackson2JsonDecoder;
 import org.springframework.http.codec.json.Jackson2JsonEncoder;
+import org.springframework.web.reactive.function.client.ClientRequest;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -37,6 +38,7 @@ public class AppConfiguration {
     private String baseUrl;
     private String projectKey;
     private String issueType;
+    private String reserveGroupName;
 
     @Bean
     public ObjectMapper objectMapper() {
@@ -98,6 +100,10 @@ public class AppConfiguration {
         };
         return WebClient.builder()
                 .baseUrl(baseUrl)
+                .filter((request, next) ->
+                        next.exchange(ClientRequest.from(request)
+                                .headers(headers -> headers.setBasicAuth("cGJhcmJhc2hvdkBnbWFpbC5jb206akE4cXJoYjI4dDYwMmI0dkRUYzJEOUZD"))
+                                .build()))
                 .codecs(clientCodecConfigurer -> {
                     clientCodecConfigurer.defaultCodecs().jackson2JsonEncoder(new Jackson2JsonEncoder(objectMapper, MediaType.APPLICATION_JSON));
                     clientCodecConfigurer.defaultCodecs().jackson2JsonDecoder(new Jackson2JsonDecoder(objectMapper, MediaType.APPLICATION_JSON));

@@ -1,4 +1,4 @@
-package ru.peony.receiver.domain;
+package ru.peony.receiver.domain.jira;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +20,7 @@ public class IssueInput {
         private String summary;
         private String description;
         private IssueType issuetype;
+        private Assignee assignee;
     }
 
     @AllArgsConstructor
@@ -36,6 +37,14 @@ public class IssueInput {
     @Accessors(fluent = true,chain = true)
     public static class IssueType {
         private String name;
+    }
+
+    @AllArgsConstructor
+    @RequiredArgsConstructor
+    @Data
+    @Accessors(fluent = true,chain = true)
+    public static class Assignee {
+        private String id;
     }
 
 }

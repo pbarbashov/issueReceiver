@@ -2,5 +2,6 @@ jira:
   baseUrl: "https://peony.atlassian.net/rest/api/2"
   projectKey: "PEONY"
   issueType: "Bug"
+  reserveGroupName: "Резервная группа"
 server:
   port: 8081

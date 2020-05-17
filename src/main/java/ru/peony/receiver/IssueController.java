@@ -107,7 +107,7 @@ public class IssueController {
         if (values == null || values.isEmpty()) {
             UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromHttpUrl(groupMembersResponse.self());
             MultiValueMap<String, String> queryParams = uriComponentsBuilder.build().getQueryParams();
-            throw new IllegalStateException(format("Пустая группа '{0}'", decode(queryParams.get("groupname").get(0), StandardCharsets.UTF_8)));
+            throw new IllegalStateException(format("Пустая группа \"{0}\"", decode(queryParams.get("groupname").get(0), StandardCharsets.UTF_8)));
         }
         return values.get(random.nextInt(values.size())).accountId();
     }
